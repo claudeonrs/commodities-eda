@@ -1,0 +1,374 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Global Commodities EDA},
+  pdfauthor={Claudeon Susanto},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Global Commodities EDA}
+\author{Claudeon Susanto}
+\date{2023-02-01}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction-to-the-dataset}{%
+\subsection{Introduction to the
+dataset}\label{introduction-to-the-dataset}}
+
+The data that I have chosen is \textbf{Technology Adoption} and can be
+downloaded from
+\href{https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-19}{this
+{[}link{]}}. This data provides very useful insights and statistics on
+each country's development and adoption of technology.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1083}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0500}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0417}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2333}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0917}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+label
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+iso3c
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+year
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+group
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+value
+\end{minipage} \\
+\midrule()
+\endhead
+BCG & \% children who received a BCG immunization & AFG & 1982 &
+Consumption & Vaccines & 10.000 \\
+ag\_harvester & Combine harvesters - threshers in use & AFG & 2001 &
+Production & Agriculture & 2.000 \\
+all\_vehicles & Total vehicles (OICA) & AFG & 2005 & Consumption &
+Transport & 660000.000 \\
+aluminum & Aluminum primary production, in metric tons & ALB & 1850 &
+Production & Industry & 0.000 \\
+atm & ATMs & ABW & 2011 & Consumption & Financial & 90.000 \\
+bed\_acute & Beds for those seeking in-patient acute care & AUS & 1960 &
+Non-Tech & Other & 67000.000 \\
+bed\_hosp & Beds in hospitals & AFG & 1960 & Non-Tech & Hospital
+(non-drug medical) & 1677.093 \\
+cabletv & Households that subscribe to cable & AFG & 1992 & Consumption
+& Communications & 0.000 \\
+elec\_coal & Electricity from coal (TWH) & ABW & 2000 & Production &
+Energy & 0.000 \\
+\bottomrule()
+\end{longtable}
+
+There are 491636 observations and 7 rows in this dataset. The rows are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{variable}: variable name
+\item
+  \texttt{label}: explanation on what the variable is and what it
+  measures
+\item
+  \texttt{iso3c}: country code
+\item
+  \texttt{year}
+\item
+  \texttt{group}: there are four groups that each variable can be
+  classified as
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Consumption: technologies that directly increase the consumer's
+    utility
+  \item
+    Production: technologies involving making goods and services that
+    consumers buy
+  \item
+    Creation: involves research and development process of technologies
+  \item
+    Non-tech: not involving technologies
+  \end{itemize}
+\item
+  \texttt{category}: There are 9 categories of the variables, which are
+  Vaccines, Agriculture, Transport, Industry, Financial, Hospital
+  (non-drug medical), Communications, Energy, and Others.
+\item
+  \texttt{value}: value of the statistics measured
+\end{enumerate}
+
+Note that each variable has different periods in which they are
+available. For example, \texttt{railpkm} has observations from year 1834
+to 2019. However, \texttt{servers} only has observations from the year
+2010 onwards.
+
+Furthermore, within each year, not all countries have observations of a
+variable in a given year. This means that the number of countries
+observed in the data given a variable differs from year to year. For
+example, in year 2020, \texttt{elec\_coal} has 68 different country
+observations. However, in 1991 it only has 30 different countries.
+
+\hypertarget{plot-1}{%
+\subsection{Plot 1}\label{plot-1}}
+
+\begin{center}\includegraphics{commodities-eda_files/figure-latex/unnamed-chunk-4-1} \end{center}
+
+\hypertarget{insights}{%
+\subsubsection{Insights}\label{insights}}
+
+This plot depicts the surplus of steel produced by each country in 2019.
+Surplus can be calculated as follows
+\[\text{Surplus} = \texttt{steel_produced} - \texttt{steel_demand}\] A
+negative surplus means that the country produced less than what it
+needed, which most likely means the country would have to import steel
+from other countries. On the other hand, a positive surplus means that
+the country produced more than it demanded. The surplus could be stored
+for future use or exported to other countries.
+
+Furthermore, \texttt{internetuser} (Number of people with internet
+access), which is directly correlated to the size of population, is also
+plotted.
+
+There are some observations that can be gleaned from this plot:
+
+\begin{itemize}
+\tightlist
+\item
+  The absolute magnitude of surplus/deficit tends to be larger in Asian
+  countries (red fill) as compared to that in other continents.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Developed East Asian economies (China, Japan, S. Korea) are among
+    countries with the largest surplus of steel production (exporters).
+  \item
+    Emerging South East Asian economies (Thailand, Indonesia, Vietnam,
+    Philippines, Malaysia) are among countries with the largest deficit
+    of steel production (importers). This is likely because large
+    amounts of steel are needed for construction projects in these
+    developing countries experiencing rapid economic growth, but these
+    countries do not have the required productive capacity and efficient
+    technologies to produce enough steel to sustain their demand.
+  \end{itemize}
+\item
+  Similarly, the magnitude of surplus/deficit tends to be larger in
+  countries where the number of people with internet access (population)
+  is large, such as in China and the US. As the population becomes
+  smaller, the magnitude of surplus/deficit becomes smaller too.
+\item
+  the US is the country with the largest deficit of steel production, so
+  it is likely to be the largest steel importer.
+\item
+  China is the country with the largest surplus of steel production, so
+  it is likely to be the biggest exporter of steel. Its surplus is twice
+  than that of Japan's so it is not surprising that the US labelled
+  China as currency manipulator and imposed tariffs on steel.
+\item
+  It is interesting to note that despite its large population, India has
+  smaller magnitude of surplus compared to smaller countries. This is
+  likely because it is also a developing country.
+\end{itemize}
+
+\hypertarget{design-choices}{%
+\subsubsection{Design choices}\label{design-choices}}
+
+\texttt{geom\_col} was chosen as it can possibly highlight the surplus
+differences between countries better than line plot or scatter plot. I
+also removed the y-axis and chose to shift the country labels closer to
+the bars as doing so makes it easier for the reader to identify which
+bar belongs to which country.
+
+Regarding the colour palette, ``Set1'' was chosen from
+\texttt{RColorBrewer} as the difference in hues can help highlight the
+different continents better. For the \texttt{geom\_point}, I chose to
+represent the variable \texttt{internetuser} using \texttt{alpha} and
+\texttt{size} as doing so can highlight the contrast between population
+sizes.
+
+This plot is more suitable for a layman as it is easy to compare the
+sizes of surplus using the height of \texttt{geom\_col} without any
+technical knowledge.
+
+\hypertarget{plot-2}{%
+\subsection{Plot 2}\label{plot-2}}
+
+\begin{center}\includegraphics{commodities-eda_files/figure-latex/unnamed-chunk-5-1} \end{center}
+
+\hypertarget{insights-1}{%
+\subsubsection{Insights}\label{insights-1}}
+
+In this plot, we calculated the Herfindahl-Hirschman Index (HHI) for
+each commodity in the global market to measure market concentration over
+time. HHI can be defined as \[\text{HHI} = \sum_{i=1}^ns_i^2\] where
+\(s_i\) is the market share percentage of firm \(i\) expressed as a
+whole number, not a decimal (Source: Investopedia.com). The maximum
+value of HHI is \(100^2 = 10000\) which is only achievable if the market
+is a pure monopoly.
+
+As HHI increases, market concentration is higher which means there is
+less competition and can be interpreted as monopoly/oligopoly.
+Similarly, lower HHI means lower market concentration which leads to
+higher competition as the market is closer to the perfect competition
+model. The interpretation of HHI is as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Highly concentrated: \(\text{HHI} \geq 2500\)
+\item
+  Moderately concentrated: \(1500 \leq \text{HHI} \leq 2500\)
+\item
+  Competitive: \(\text{HHI} \leq 1500\)
+\end{itemize}
+
+We would like to measure HHI of global commodities to determine the
+competitiveness of various markets where each country acts as a
+firm/supplier. We measure the market share of each country by taking the
+amount produced divided by global total production. From Plot 2, we can
+see that market concentrations of various global commodities have
+significantly changed from over 30 years ago.
+
+\begin{itemize}
+\tightlist
+\item
+  For the market of electricity produced by hydrotechnology, the market
+  still remained competitive in 2019, albeit there has been a slow
+  increase in concentration since the early 2000's. Interestingly, there
+  was a huge jump in market concentration in 2020 so the market is now
+  moderately concentrated.
+\item
+  For the market of electricity produced by solar technology, the market
+  concentration has drastically decreased from highly concentrated in
+  1991 to borderline competitive in 2020.
+\item
+  For the market of servers, the data was only available for 2010
+  onwards. It experienced a sharp drop in market concentration around
+  the 2015's but market concentration rose up again to highly
+  concentrated in 2020.
+\item
+  For the market of steel, it experienced a rapid increase in market
+  concentration from 1991 to 2020 (highly concentrated).
+\end{itemize}
+
+As can be seen, market concentration changes differently over time for
+different types of goods. However, it can be noted that the market
+concentrations of the different goods are more similar in 2020 than in
+1991 where there was a huge gap in market concentrations between Solar
+Powered Electricity and Steel Production.
+
+\hypertarget{design-choices-1}{%
+\subsubsection{Design choices}\label{design-choices-1}}
+
+Line geom is used as it would capture the trend of changing market
+concentrations better than a scatterplot. Log scale is used for the
+y-axis as initially the lines were concentrated on the bottom side of
+the canvas. Regarding the color, ``Set1'' palette was chosen to
+differentiate the lines better as other palettes are too light. I also
+chose to add texts and dashed lines to label the boundaries for
+different levels of market concentration ratios so that the reader can
+easily interpret how concentrated a market is without looking at the
+numbers. Line width and point size were also increased as otherwise they
+are too thin.
+
+This plot would be appropriate for a technical audience as otherwise it
+might be difficult to understand what market concentration means and how
+it can be interpreted.
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+Charles Kenny and George Yang, \& Shruti Viswanathan and Michael Pisa.
+(n.d.). \emph{Technology and development: An exploration of the Data}.
+Center for Global Development \textbar{} Ideas to Action. Retrieved
+November 11, 2022, from
+\url{https://www.cgdev.org/publication/technology-and-development-exploration-data}
+
+Colando, S. (n.d.). \emph{7-19-2022 Tidy Tuesday: Technology
+Consumption}. RPubs. Retrieved November 11, 2022, from
+\url{https://rpubs.com/scolando/Tidy-Tuesday-07-19-2022}
+
+Rfordatascience. (n.d.). \emph{Tidytuesday/data/2022/2022-07-19 at
+master · rfordatascience/tidytuesday}. GitHub. Retrieved November 11,
+2022, from
+\url{https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-19}
+
+\end{document}
